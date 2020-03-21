@@ -1,0 +1,34 @@
+{
+    "terminal.integrated.shell.windows": "D:\\Program Files\\Git\\bin\\bash.exe",
+    "workbench.sideBar.location": "left",
+    "files.autoSave": "afterDelay",
+    "AllAutocomplete.minWorldLenght": 1,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "window.zoomLevel": 0,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/styles"
+        }
+    ],
+    "jshint.options": {
+        "esversion": 6
+    },
+    "beautify.config": {
+        "indent_size": 4,
+        "editor.tabSize": 4
+    },
+    "eslint.options": {
+        "eslint indent": [
+            "error",
+            "tab"
+        ],
+        "editor.tabSize": 4
+    }
+}
