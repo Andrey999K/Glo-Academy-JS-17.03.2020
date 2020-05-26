@@ -12,7 +12,8 @@ const citiesApi = "http://api.travelpayouts.com/data/ru/cities.json",
     // const citiesApi = "dataBase/cities.json",
     proxy = "https://cors-anywhere.herokuapp.com/",
     API_KEY = "291dbf9184cd4d343ee21931e509f01e",
-    calendar = "http://min-prices.aviasales.ru/calendar_preload";
+    calendar = "http://min-prices.aviasales.ru/calendar_preload",
+    MAX_COUNT = 10;
 
 let city = [];
 
@@ -118,7 +119,7 @@ const createCard = (data) => {
         <h3 class="agent">${data.gate}</h3>
         <div class="ticket__wrapper">
             <div class="left-side">
-                <a href="${getLinkAviasales(data)}" class="button button__buy">Купить
+                <a href="${getLinkAviasales(data)}" target="_blank" class="button button__buy">Купить
                     за ${data.value}₽</a>
             </div>
             <div class="right-side">
@@ -159,9 +160,15 @@ const renderCheapDay = (cheapTicket) => {
 const renderCheapYear = cheapTickets => {
     otherCheapTickets.style.display = 'block';
     otherCheapTickets.innerHTML = '<h2>Самые дешевые билеты на другие даты</h2>';
+
     cheapTickets.sort((a, b) => a.value - b.value);
 
-    console.log(cheapTickets);
+    for (let i = 0; i < cheapTickets.length && i < MAX_COUNT; i++) {
+        const ticket = createCard(cheapTickets[i]);
+        otherCheapTickets.append(ticket);
+    }
+
+    // console.log(cheapTickets);
 };
 
 const renderCheap = (data, date) => {
