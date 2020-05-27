@@ -69,12 +69,11 @@ const getNameCity = (code) => {
 };
 
 const getDate = (date) => {
+
     return new Date(date).toLocaleString('ru', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
     });
 };
 
@@ -111,6 +110,7 @@ const getLinkAviasales = (data) => {
 const createCard = (data) => {
     const ticket = document.createElement('article');
     ticket.classList.add('ticket');
+    console.log(getDate(data.depart_date));
 
     let deep = '';
 
@@ -177,9 +177,6 @@ const renderCheap = (data, date) => {
     const cheapTicketDay = cheapTicketYear.filter(item => {
         return item.depart_date === date;
     });
-
-
-
     renderCheapDay(cheapTicketDay);
     renderCheapYear(cheapTicketYear);
 };
@@ -222,7 +219,6 @@ formSearch.addEventListener("submit", event => {
         const requestData =
             `?depart_date=${formData.when}&origin=${formData.from.code}` +
             `&destination=${formData.to.code}&one_way=true`;
-
         getData(calendar + requestData, data => {
             renderCheap(data, formData.when);
         });
